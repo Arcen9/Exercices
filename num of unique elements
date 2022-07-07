@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] array = new int[n];
+        int temp;
+        boolean flag = false;
+        for (int i = 0; i < n; i++) {
+            array[i] = sc.nextInt();
+        }
+        for (int i = 0; i < array.length; i++) {
+            flag = false;
+            for (int j = 0; j < array.length; j++) {
+                if(array[i] == array[j] && i != j) flag = true;
+            }
+            if (!flag) System.out.println(array[i]);
+        }
+    }
+    }
