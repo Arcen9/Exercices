@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int count = 0;
+        double sum = 0;
+        while(a != 0){
+            sum += a;
+            a = sc.nextInt();
+            count++;
+        }
+        sum /= count;
+        System.out.println((double)sum);
+    }
+}
