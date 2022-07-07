@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String n = sc.nextLine();
+        int sum = 1;
+        while(!n.equals("СТОП")) {
+            if(Integer.parseInt(n) != 0) sum *= Integer.parseInt(n);
+            n = sc.nextLine();
+        }
+        if(sum == 1) System.out.println("Не найдено");
+        else System.out.println(sum);
+    }
+}
