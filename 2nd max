@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int temp = a;
+        int temp2 = 0;
+        while(a != 0){
+            a = sc.nextInt();
+            if(a > temp){
+                temp2 = temp;
+                temp = a;
+            }
+            if(a > temp2 && a < temp) temp2 = a;
+        }
+        System.out.println(temp2);
+    }
+}
