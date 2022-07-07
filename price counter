@@ -1,0 +1,16 @@
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int n = sc.nextInt();
+        int c,d;
+        c = b * n;
+        b = c % 100;
+        c = c - b;
+        System.out.print(a * n + c / 100 + " ");
+        System.out.print(b);
+    }
+}
