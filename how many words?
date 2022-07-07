@@ -1,0 +1,20 @@
+import java.util.Locale;
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String m = sc.nextLine();
+        String o = sc.nextLine();
+        String str = sc.nextLine();
+        String str1 = str.toLowerCase(Locale.ROOT);
+        String[] str2 = (str1.split(" "));
+        int countM = 0, countO = 0;
+        for (String st : str2){
+            if(st.startsWith(m) && st.endsWith(o)) countM++;
+            else if (st.startsWith(o) && st.endsWith(m)) countO++;
+        }
+        System.out.println(countM);
+        System.out.println(countO);
+    }
+}
