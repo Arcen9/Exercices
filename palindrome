@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        char[] c = str.toCharArray();
+        Character[] ch = new Character[c.length];
+        String word = new String();
+        String revWord = new String();
+        for (int i = 0; i < c.length; i++) {
+            ch[i] = c[i];
+            if(Character.isLetter(ch[i]) || Character.isDigit(ch[i]))
+                word += ch[i];
+        }
+        char w[] = word.toCharArray();
+        for (int i = w.length - 1; i >= 0; i--) {
+                revWord += w[i];
+        }
+        word = word.toLowerCase();
+        revWord = revWord.toLowerCase();
+//        System.out.println(word);
+//      System.out.println(revWord);
+        System.out.println(word.equals(revWord) ? "YES" : "NO");
+    }
+}
