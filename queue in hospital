@@ -1,0 +1,61 @@
+    import java.util.ArrayList;
+    import java.util.Scanner;
+
+    class MyProgram {
+        public static void main(String[] args){
+            Scanner sc = new Scanner(System.in);
+            ArrayList<String> list = new ArrayList<>();
+            int n = sc.nextInt();
+            String str;
+            int ind;
+            String temp;
+            String processing = null;
+            for (int i = 0; i < n; i++) {
+                str = sc.next();
+                if(str.equals("Добавить")){
+                    list.add(temp = sc.next());
+                    System.out.println(temp + " в очереди");
+                }
+                else if(str.equals("Следующий!")){
+                    if(list.isEmpty()){
+                        System.out.println("Отлично, попью чаёк!");
+                        continue;
+                    }
+                    processing = list.get(0);
+                    System.out.println(processing + " в обработке");
+                    list.remove(0);
+                }
+                else if(str.equals("Стоит")){
+                    sc.next();
+                    sc.next();
+                    sc.next();
+                    temp = sc.next();
+                    if(list.size() >= 5) {
+                        System.out.println("Слабак!");
+                        continue;
+                    }else list.add(temp);
+                }
+                else if (str.equals("Посмотреть")) {
+                    sc.next();
+                    if(list.isEmpty()){
+                        System.out.println("*прокатилось перекати-поле*");
+                        continue;
+                    }
+                    System.out.println(String.join(" ", list));
+                }
+                else{
+                    sc.next();
+                    sc.next();
+                    temp = sc.next();
+                    if(list.contains(temp))
+                        list.add(list.lastIndexOf(temp) + 1,str);
+                    else if(temp.equals(processing))
+                        list.add(0,str);
+                    else {
+                        System.out.println(str + ", не надо тут ля-ля");
+                        list.add(str);
+                    }
+                }
+            }
+        }
+    }
