@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        str = str.trim();
+        char ch[] = str.toCharArray();
+        int count;
+        if(ch[0] == 'а' || ch[0] == 'А') count = 1;
+        else count = 0;
+        for (int i = 0; i < ch.length; i++) {
+            if(ch[i] == ' ')
+                if(ch[i + 1] == 'а' || ch[i + 1] == 'А')
+                    count++;
+        }
+        System.out.println(count);
+    }
+}
