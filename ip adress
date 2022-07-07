@@ -1,0 +1,16 @@
+import java.util.Locale;
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String[] str1 = str.split("\\.");
+        boolean flag = true;
+        for(String s : str1){
+            if(s.compareTo(String.valueOf(255)) > 0) flag = false;
+        }
+        if(str1.length == 4 && flag) System.out.println("YES");
+        else System.out.println("NO");
+    }
+}
