@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        char[] c = str.toCharArray();
+        int n = 0;
+        for (char value : c) {
+            if((int)value - 48 == 0 || (int)value - 48 == 6 || (int)value - 48 == 9) n++;
+            else if((int)value - 48 == 8) n += 2;
+        }
+        System.out.println(n);
+    }
+}
