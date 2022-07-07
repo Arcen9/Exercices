@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int temp = a;
+        double sum = 0;
+        while(a != 0){
+            a = sc.nextInt();
+            if(a > temp) temp = a; 
+        }
+        System.out.println(temp);
+    }
+}
