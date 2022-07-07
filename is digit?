@@ -1,0 +1,10 @@
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Character c = sc.next().charAt(0);
+        if(c.isDigit(c)) System.out.println("yes");
+        else System.out.println("no");
+    }
+}
