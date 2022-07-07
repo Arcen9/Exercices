@@ -1,0 +1,12 @@
+import java.util.Scanner;
+
+class MyProgram {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String nw = sc.nextLine();
+        String book = sc.nextLine();
+        String updatedBook = book.replace(str, nw);
+        System.out.println(updatedBook);
+    }
+}
