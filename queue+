@@ -1,0 +1,27 @@
+    import java.util.ArrayList;
+    import java.util.Scanner;
+
+    class MyProgram {
+        public static void main(String[] args){
+            Scanner sc = new Scanner(System.in);
+            ArrayList<String> list = new ArrayList<>();
+            int n = sc.nextInt();
+            String str = sc.next();
+            int ind;
+            for (int i = 0; i < n; i++) {
+                if(str.equals("Добавить")){
+                    list.add(sc.next());
+                }
+                else if(str.equals("Следующий!")){
+                    list.remove(0);
+                }
+                else{
+                    sc.next();
+                    sc.next();
+                    list.add(list.lastIndexOf(sc.next()) + 1,str);
+                }
+                if(i != n -1) str = sc.next();
+            }
+            System.out.println(String.join(" ", list));
+        }
+    }
