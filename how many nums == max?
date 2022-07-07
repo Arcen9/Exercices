@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+class MyProgram{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int max = n;
+        int counter = 1;
+        while(n != 0){
+            n = sc.nextInt();
+            if(n > max) {
+                max = n;
+                counter = 0;
+            }
+            if(n == max){
+                counter++;
+            }
+        }
+        System.out.println(counter);
+    }
+}
