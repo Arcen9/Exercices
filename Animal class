@@ -1,0 +1,218 @@
+import java.awt.event.WindowEvent;
+import java.util.Scanner;
+
+class Animal {
+    private String type;
+    private String name;
+    private int age;
+    private double weight;
+    private boolean isFly;
+    private boolean isWalk;
+    private boolean isSwim;
+    static int id;
+    private static int counter = 0;
+    final static String stringDescription = "This is the Animal class with the following animal properties: " +
+            "type, name, age, weight, can this animal fly(isFly), can this animal walk(isWalk), can this animal swim(isSwim)";
+    public void display(){
+        System.out.println("Type: " + this.type + ", Name: " + this.name +", Age: " + this.age +
+                ", Weight: " + this.weight+ ", Can it fly: " + this.isFly+ ", Can it walk: " + this.isWalk + ", Can it swim: " + this.isSwim);
+    }
+    public String getType(){
+        return this.type;
+    }
+    public void setType(String type){
+        this.type = type;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public void setName(String name){
+        this.name = name;
+    }
+    public int getAge(){
+        return this.age;
+    }
+    public void setAge(int age){
+        this.age = age;
+    }
+    public double getWeight(){
+        return this.weight;
+    }
+    public void setWeight(double weight){
+        this.weight = weight;
+    }
+    public boolean isFly(){
+        return this.isFly;
+    }
+    public void setFly(boolean isFly){
+        this.isFly = isFly;
+    }
+    public boolean isWalk(){
+        return this.isWalk;
+    }
+    public void setWalk(boolean isWalk){
+        this.isWalk = isWalk;
+    }
+    public boolean isSwim(){
+        return this.isSwim;
+    }
+    public void setSwim(boolean isSwim){
+        this.isSwim = isSwim;
+    }
+    final public void rename(String newName){
+        this.name = newName;
+    }
+    public void holiday(){
+        this.weight += 0.1;
+    }
+    public void holiday(double m){
+        this.weight += m;
+    }
+    public void holiday(double m, int days){
+        this.weight += m * days;
+    }
+    Animal(String type, String name){
+        this.type = type;
+        this.name = name;
+    }
+    Animal(String type, int age){
+        this.type = type;
+        this.age = age;
+        this.name = "No Name";
+    }
+    Animal(String type, String name, int age, double weight, boolean fly, boolean walk, boolean swim){
+        this.type = type;
+        this.name = name;
+        this.age = age;
+        this.weight = weight;
+        this.isFly = fly;
+        this.isWalk = walk;
+        this.isSwim = swim;
+    }
+    Animal(){}
+    {
+        id = ++counter;
+        this.name = "Default name";
+        this.type = "Some animal";
+    }
+    public String toString(){
+        return Animal.id + " Type: " + this.type + ", Name: " + this.name +", Age: " + this.age +
+                ", Weight: " + this.weight+ ", Can it fly: " + this.isFly+ ", Can it walk: " + this.isWalk + ", Can it swim: " + this.isSwim;
+    }
+}
+
+class Bird extends Animal{
+    {
+        this.setFly(true);
+    }
+    private String area;
+    private boolean winterFly;
+    public void setArea(String area){
+        this.area = area;
+    }
+    public String getArea(){
+        return this.area;
+    }
+    public void setWinterFly(boolean set){
+        this.winterFly = set;
+    }
+    public boolean isWinterFly(){
+        return this.winterFly;
+    }
+    public void chirick_chirick(){
+        System.out.println("Chirik-Chirik");
+    }
+    public void display(){
+        System.out.print("I am " + getClass() + " " + this.getArea() + " " + this.isWinterFly() + " ");
+        super.display();
+    }
+}
+
+final class Fish extends Animal{
+    {
+        this.setSwim(true);
+    }
+    String squama;
+    boolean upStreamSwim;
+    public void setSquama(String type){
+        this.squama = type;
+    }
+    public String getSquama(){
+        return this.squama;
+    }
+    public void setUpStreamSwim(boolean set){
+        this.upStreamSwim = set;
+    }
+    public boolean isUpStreamSwim(){
+        return this.upStreamSwim;
+    }
+    public void bul_bul(){
+        System.out.println("Bul-bul");
+    }
+    public void display(){
+        System.out.print("I am " + getClass() + " " + this.getSquama() + " " + this.isUpStreamSwim() + " ");
+        super.display();
+    }
+}
+
+class Insect extends Animal{
+    {
+        this.setWalk(true);
+    }
+    int wingCount;
+    boolean likeJesus;
+    public void setWingCount(int count){
+        this.wingCount = count;
+    }
+    public int getWingCount(){
+        return this.wingCount;
+    }
+    public void setLikeJesus(boolean set){
+        this.likeJesus = set;
+    }
+    public boolean isLikeJesus(){
+        return this.likeJesus;
+    }
+    public void ggggg(){
+        System.out.println("Ggggg");
+    }
+    public void display(){
+        System.out.print("I am " + getClass() + " " + this.getWingCount() + " " + this.isLikeJesus() + " ");
+        super.display();
+    }
+}
+
+class MyProgram{
+    public static void main(String[] args) {
+        Animal duck = new Animal("Duck", "Ducky", 3, 5.8, true, true, true);
+        duck.display();
+
+        Bird b = new Bird();
+        b.setName("Bob");
+        b.display();
+        b.setArea("SomeWhere");
+        b.setWinterFly(false);
+        System.out.println(b.getArea());
+        System.out.println(b.isWinterFly());
+        b.chirick_chirick();
+
+        Fish f = new Fish();
+        f.setName("Salmon");
+        f.display();
+        f.setSquama("Big one");
+        f.setUpStreamSwim(true);
+        System.out.println(f.getSquama());
+        System.out.println(f.isUpStreamSwim());
+        f.bul_bul();
+
+        Insect i = new Insect();
+        i.setName("UnFlying Fly");
+        i.display();
+        i.setWingCount(4);
+        i.setLikeJesus(true);
+        System.out.println(i.getWingCount());
+        System.out.println(i.isLikeJesus());
+        i.ggggg();
+        System.out.println(i.toString());
+    }
+}
