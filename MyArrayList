@@ -1,0 +1,43 @@
+import java.util.Arrays;
+
+public class MyArrayList {
+    int size;
+    int[] array;
+
+    MyArrayList(){
+        array = new int[10];
+    }
+
+    MyArrayList(int num){
+        array = new int[num];
+    }
+
+    public int size(){
+        return size;
+    }
+
+    public void remove(int inx) {
+        if(inx > size - 1)
+            throw new IllegalArgumentException();
+        for (int i = inx; i < size - 1; i++) {
+            array[i] = array[i + 1];
+        }
+        size--;
+        array = Arrays.copyOf(array, size);
+    }
+
+    public void add(int value){
+        checkCapacity();
+        array[size++] = value;
+    }
+
+    public String toString(){
+        return Arrays.toString(array);
+    }
+
+    private void checkCapacity(){
+        if(size + 1 > size){
+            array = Arrays.copyOf(array, size + 1);
+        }
+    }
+}
