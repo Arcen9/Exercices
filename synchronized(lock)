@@ -1,0 +1,84 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class MyProgram {
+    public static void main(String[] args) {
+        long before = System.currentTimeMillis();
+
+        Worker test = new Worker();
+        test.go();
+
+        long after = System.currentTimeMillis();
+
+        System.out.println("Program took " + (after - before) + "ms");
+    }
+}
+
+class Worker {
+    List<Integer> list1 = new ArrayList<>();
+    List<Integer> list2 = new ArrayList<>();
+
+    Object lock1 = new Object();
+    Object lock2 = new Object();
+
+    Random ran = new Random();
+
+    public void addElems1(){
+        synchronized (lock1) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            list1.add(ran.nextInt(100));
+        }
+    }
+
+    public void addElems2(){
+        synchronized (lock2) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            list2.add(ran.nextInt(100));
+        }
+    }
+
+    public void work(){
+        for (int i = 0; i < 1000; i++) {
+            addElems1();
+            addElems2();
+        }
+    }
+
+    public void go(){
+
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                work();
+            }
+        });
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                work();
+            }
+        });
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("list 1: " + list1.size());
+        System.out.println("list 2: " + list2.size());
+    }
+}
