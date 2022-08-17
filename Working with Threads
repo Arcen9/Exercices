@@ -21,19 +21,6 @@ class Worker {
 
     Random ran = new Random();
 
-    Thread thread1 = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            addElems(list1);
-        }
-    });
-    Thread thread2 = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            addElems(list2);
-        }
-    });
-
     public void addElems(List<Integer> list){
         for (int i = 0; i < 1000; i++) {
             try {
@@ -46,6 +33,19 @@ class Worker {
     }
 
     public void go(){
+
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                addElems(list1);
+            }
+        });
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                addElems(list2);
+            }
+        });
 
         thread1.start();
         thread2.start();
