@@ -1,0 +1,75 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
+
+class MyProgram{
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    produce();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    consume();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        thread1.start();
+        thread2.start();
+
+        thread1.join();
+        thread2.join();
+    }
+
+    private static Queue<Integer> queue = new LinkedList<>();
+    private static Object lock = new Object();
+    private static final int MAX = 10;
+
+    private static void produce() throws InterruptedException {
+        Random ran = new Random();
+
+        while(true){
+            synchronized (lock) {
+                while (queue.size() == MAX) {
+                    lock.wait();
+                }
+
+                queue.offer(ran.nextInt(100));
+                lock.notify();
+            }
+        }
+    }
+
+    private static void consume() throws InterruptedException {
+        Thread.sleep(1000);
+
+        while(true){
+            synchronized (lock){
+                {
+                    while(queue.size() == 0){
+                        lock.wait();
+                    }
+
+                    System.out.println(queue.poll());
+                    System.out.println("Queue size is " + queue.size());
+                    lock.notify();
+                }
+            }
+
+            Thread.sleep(1000);
+        }
+    }
+}
+
