@@ -1,0 +1,21 @@
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+class MyProgram{
+    public static void main(String[]args){
+        String str = "Push1235ups";
+        System.out.println(str.matches("\\w+\\d+\\w+"));
+        System.out.println(str.replaceAll("\\d+", " "));
+        String[] str1 = str.split("\\d+");
+        System.out.println(Arrays.toString(str1));
+
+        String text = "Hello its ajbn13@gmail.com, sending you smth. Thx 1gaf@mail.ru";
+
+        Pattern email = Pattern.compile("\\w+@(gmail|mail)\\.(com|ru)");
+        Matcher matcher = email.matcher(text);
+
+        while(matcher.find())
+            System.out.println(matcher.group());
+    }
+}
